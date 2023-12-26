@@ -1,0 +1,35 @@
+CREATE DATABASE QLSACH
+
+USE QLSACH
+
+CREATE TABLE TACGIA(
+MATG NCHAR(10) NOT NULL PRIMARY KEY,
+TENTACGIA NVARCHAR(50) NOT NULL 
+)
+CREATE TABLE SACH (
+    MASACH NCHAR(10) NOT NULL PRIMARY KEY,
+    TENSACH NVARCHAR(50) NOT NULL,
+    NAMXUATBAN INT,
+    SOTRANG INT NOT NULL, 
+    MATG NCHAR(10) CONSTRAINT FK_S_TG FOREIGN KEY(MATG) REFERENCES TACGIA(MATG)
+)
+
+INSERT INTO TACGIA VALUES
+    ('TG1', N'LÊ TUẤN ANH'),
+    ('TG2', N'NGUYỄN MINH HÙNG');
+
+ALTER TABLE NhanVien
+ALTER COLUMN HeSoLuong FLOAT;
+
+Tạo giao diện, đặt thuộc tính Name cho các control
+Cài Nuget Microsoft.EntityFrameworkCore.sqlserver và Microsoft.EntityFrameworkCore.tools
+Tìm Server Explorer, data connections, add connection, Microsoft SQL Server
+Cop name trong sql server dán vào name -> trong mục connect to a database thì sẽ select database name vừa tạo
+Thành công, hiện database trong data connections, vào đó chọn properties cop conection string
+Trong package manager console
+Scaffold-DbContext "chuỗi_kết_nối" Microsoft.EntityFrameworkCore.SqlServer –OutputDir Models
+Đổi tên solution
+thêm namespaces có modal vào : using solution's name.Models;
+thêm : using System.Text.RegularExpressions;
+	using System.Reflection;
+
